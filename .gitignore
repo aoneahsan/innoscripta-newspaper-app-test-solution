@@ -33,3 +33,7 @@ yarn-error.log*
 .env
 
 .history
+
+*.zip
+
+pnpm-lock.yaml
