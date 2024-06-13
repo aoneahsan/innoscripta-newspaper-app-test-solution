@@ -1,4 +1,4 @@
-import { Theme } from '@radix-ui/themes';
+import { Theme, ThemePanel } from '@radix-ui/themes';
 
 // Import Radix UI CSS
 import { RouterProvider } from 'react-router-dom';
@@ -25,7 +25,7 @@ const AppEntryPoint: React.FC = () => (
 					<ReactQueryDevtools initialIsOpen={false} />
 				</QueryClientProvider>
 			</RecoilRoot>
-			{/* <ThemePanel /> */}
+			<ThemePanel />
 
 			<ToastContainer />
 		</Theme>
