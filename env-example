@@ -1,6 +1,6 @@
 # Backend Related ENVs
-VITE_BACKEND_URL_LOCAL="Local API Url"
-VITE_BACKEND_URL_PROD="Production API Url"
+VITE_BACKEND_URL_LOCAL="Local API Url (e.g: http://localhost:8000/api)"
+VITE_BACKEND_URL_PROD="Production API Url (e.g: https://newspaper.aoneahsan.com/api)"
 
 #Frontend
 VITE_CRYPTO_SECRET='Enter a secret value to encrypt data in frontend and decrypt it.'
