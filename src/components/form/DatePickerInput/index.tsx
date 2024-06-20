@@ -10,8 +10,8 @@ interface IDatePickerInputProps {
 	value?: string | Date | null;
 	inputName: string;
 	placeholder: string;
-	minDate?: Date | null;
-	maxDate?: Date | null;
+	minDate?: Date;
+	maxDate?: Date;
 	errorMessage?: string;
 	isTouched?: boolean;
 }

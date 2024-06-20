@@ -14,7 +14,9 @@
 		"cap:add-android": "cap add android",
 		"cap:open-android": "cap open android",
 		"cap:generate-assets": "capacitor-assets generate --android",
-		"sync:apps-config": "trapeze run apps-config.yaml"
+		"sync:apps-config": "trapeze run apps-config.yaml",
+		"cap:copy-android": "cap copy android",
+		"cap:sync": "cap sync"
 	},
 	"dependencies": {
 		"@capacitor/android": "^6.1.0",

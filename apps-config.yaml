@@ -4,7 +4,7 @@ vars:
   BUNDLE_ID:
     default: com.aoneahsan.newspaper
   PRODUCT_NAME:
-    default: Trizlink
+    default: NewsPaper
 
 platforms:
   ios:

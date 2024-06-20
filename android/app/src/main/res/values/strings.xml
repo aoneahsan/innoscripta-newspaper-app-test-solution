@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">news-paper-app-frontend-v1</string>
-    <string name="title_activity_main">news-paper-app-frontend-v1</string>
+    <string name="app_name">NewsPaper</string>
+    <string name="title_activity_main">NewsPaper</string>
     <string name="package_name">com.aoneahsan.newspaper</string>
     <string name="custom_url_scheme">com.aoneahsan.newspaper</string>
 </resources>

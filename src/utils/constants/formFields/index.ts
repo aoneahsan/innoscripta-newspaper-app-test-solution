@@ -41,8 +41,8 @@ export const searchArticlesFormFields = {
 	[SearchArticlesFiltersFormFieldsEnum.keyword]: {
 		type: FormFieldType.text,
 		placeholder: 'Keyword',
-		minDate: null,
-		maxDate: null,
+		minDate: undefined,
+		maxDate: undefined,
 	},
 	[SearchArticlesFiltersFormFieldsEnum.startDate]: {
 		type: FormFieldType.date,
@@ -59,14 +59,14 @@ export const searchArticlesFormFields = {
 	[SearchArticlesFiltersFormFieldsEnum.category]: {
 		type: FormFieldType.select,
 		placeholder: 'Category',
-		minDate: null,
-		maxDate: null,
+		minDate: undefined,
+		maxDate: undefined,
 	},
 	[SearchArticlesFiltersFormFieldsEnum.source]: {
 		type: FormFieldType.select,
 		placeholder: 'Source',
-		minDate: null,
-		maxDate: null,
+		minDate: undefined,
+		maxDate: undefined,
 	},
 } as const;
 
