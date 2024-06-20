@@ -13,7 +13,8 @@
 		"lint": "eslint",
 		"cap:add-android": "cap add android",
 		"cap:open-android": "cap open android",
-		"cap:generate-assets": "capacitor-assets generate --android"
+		"cap:generate-assets": "capacitor-assets generate --android",
+		"sync:apps-config": "trapeze run apps-config.yaml"
 	},
 	"dependencies": {
 		"@capacitor/android": "^6.1.0",
@@ -52,6 +53,7 @@
 		"@capacitor/cli": "6.1.0",
 		"@testing-library/dom": ">=10.1.0",
 		"@testing-library/jest-dom": "^6.4.6",
+		"@trapezedev/configure": "^7.0.10",
 		"@testing-library/react": "^16.0.0",
 		"@testing-library/user-event": "^14.5.2",
 		"@types/crypto-js": "^4.2.2",
