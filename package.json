@@ -12,7 +12,8 @@
 		"test.unit": "vitest",
 		"lint": "eslint",
 		"cap:add-android": "cap add android",
-		"cap:open-android": "cap open android"
+		"cap:open-android": "cap open android",
+		"cap:generate-assets": "capacitor-assets generate --android"
 	},
 	"dependencies": {
 		"@capacitor/android": "^6.1.0",
@@ -47,6 +48,7 @@
 		"zod": "^3.23.8"
 	},
 	"devDependencies": {
+		"@capacitor/assets": "^3.0.5",
 		"@capacitor/cli": "6.1.0",
 		"@testing-library/dom": ">=10.1.0",
 		"@testing-library/jest-dom": "^6.4.6",
