@@ -49,7 +49,7 @@
 ### Other Details
 
 - I have created and completed a "Postman" collection i used to test the backend and third party APIs i used in this project, if you want to check that then please use this link to import "Postman Collection" directly in your locally running postman software
-  - [https://api.postman.com/collections/9763817-b3ff3117-3b71-4b67-a3a4-b177837c6a92?access_key=PMAT-01HZWPR6TWDYFG9VWS6R7HMEZR](https://api.postman.com/collections/9763817-b3ff3117-3b71-4b67-a3a4-b177837c6a92?access_key=PMAT-01HZWPR6TWDYFG9VWS6R7HMEZR)
+  - [https://www.postman.com/solar-escape-511019/workspace/newspaper-app-apis-testing-ahsan-mahmood-aoneahsan-com-linkedin-com-in-aoneahsan/overview](https://www.postman.com/solar-escape-511019/workspace/newspaper-app-apis-testing-ahsan-mahmood-aoneahsan-com-linkedin-com-in-aoneahsan/overview)
 - I have setup a Private Github repo for this project [https://github.com/aoneahsan/newspaper-app-reactjs-laravel](https://github.com/aoneahsan/newspaper-app-reactjs-laravel)
   - if you want to access that please let me know
     - share a email and i will add that as contributor in this repo
