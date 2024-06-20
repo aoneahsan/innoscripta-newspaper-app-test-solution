@@ -4,6 +4,8 @@
 
 - Visit [https://newspaper.aoneahsan.com](https://newspaper.aoneahsan.com) to view the app demo.
 
+### [App Installation Guide](./app-installation-guide.pdf)
+
 ## Contact Details
 
 - Linkedin: [https://linkedin.com/in/aoneahsan](https://linkedin.com/in/aoneahsan)
