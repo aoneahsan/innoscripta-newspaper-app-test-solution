@@ -12,6 +12,7 @@ import '@radix-ui/themes/styles.css';
 import 'react-toastify/dist/ReactToastify.min.css';
 
 import 'react-datepicker/dist/react-datepicker.css';
+import { isCapWeb } from './utils/constants/capacitorApis';
 
 const queryClient = new QueryClient();
 
@@ -25,7 +26,7 @@ const AppEntryPoint: React.FC = () => (
 					<ReactQueryDevtools initialIsOpen={false} />
 				</QueryClientProvider>
 			</RecoilRoot>
-			<ThemePanel />
+			{isCapWeb && <ThemePanel />}
 
 			<ToastContainer />
 		</Theme>
