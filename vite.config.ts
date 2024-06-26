@@ -15,6 +15,7 @@ export default defineConfig({
 		environment: 'jsdom',
 		setupFiles: './src/setupTests.ts',
 		coverage: {
+			ignoreEmptyLines: true,
 			reporter: ['text', 'html'],
 			provider: 'v8',
 		},
