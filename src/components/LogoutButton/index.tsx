@@ -11,7 +11,7 @@ import {
 	showErrorNotification,
 	showSuccessNotification,
 } from '@/utils/helpers/reactToastify';
-import { elementTestSelector } from '@/utils/tests';
+import { elementTestSelector } from '@/utils/constants/testingSelectors';
 import { Button } from '@radix-ui/themes';
 import { useSetRecoilState } from 'recoil';
 

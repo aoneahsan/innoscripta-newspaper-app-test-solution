@@ -21,7 +21,7 @@ import {
 	showSuccessNotification,
 } from '@/utils/helpers/reactToastify';
 import { MESSAGES } from '@/utils/messages';
-import { elementTestSelector } from '@/utils/tests';
+import { elementTestSelector } from '@/utils/constants/testingSelectors';
 import { registerFormValidationSchema } from '@/validationSchema';
 import { Box, Button, Card, Flex, Heading, Link, Text } from '@radix-ui/themes';
 import { Form, Formik } from 'formik';

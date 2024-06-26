@@ -1,5 +1,5 @@
 import { getTestingAttribute } from '@/utils/helpers';
-import { elementTestSelector } from '@/utils/tests';
+import { elementTestSelector } from '@/utils/constants/testingSelectors';
 import { Box, Button, Flex } from '@radix-ui/themes';
 import { useFormikContext } from 'formik';
 

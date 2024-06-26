@@ -4,7 +4,7 @@ import { developerDetails } from '@/utils/constants';
 import { LinkTargetEnum } from '@/enums';
 import { useMemo } from 'react';
 import { useResponsiveScales } from '@/hooks/reactResponsive';
-import { elementTestSelector } from '@/utils/tests';
+import { elementTestSelector } from '@/utils/constants/testingSelectors';
 import { getTestingAttribute } from '@/utils/helpers';
 
 const Footer: React.FC = () => {

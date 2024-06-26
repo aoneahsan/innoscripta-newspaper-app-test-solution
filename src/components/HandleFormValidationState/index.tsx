@@ -1,6 +1,6 @@
 import { formValidationRStateAtom } from '@/state/formState';
 import { getTestingAttribute } from '@/utils/helpers';
-import { elementTestSelector } from '@/utils/tests';
+import { elementTestSelector } from '@/utils/constants/testingSelectors';
 import { InfoCircledIcon } from '@radix-ui/react-icons';
 import { Callout, Strong, Switch, Text } from '@radix-ui/themes';
 import { useRecoilState } from 'recoil';

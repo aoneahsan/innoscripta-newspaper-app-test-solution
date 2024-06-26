@@ -18,9 +18,11 @@
     "rootDir": "./",
     "baseUrl": "./",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@cy/*": ["./cypress/*"]
     },
+    "types": ["cypress", "vitest/globals"]
   },
-  "include": ["src"],
+  "include": ["src", "cypress"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

@@ -9,7 +9,7 @@ import { userIsAuthenticatedRStateSelector } from '@/state/userState';
 import LogoutButton from '../LogoutButton';
 import { useResponsiveScales } from '@/hooks/reactResponsive';
 import { getTestingAttribute } from '@/utils/helpers';
-import { elementTestSelector } from '@/utils/tests';
+import { elementTestSelector } from '@/utils/constants/testingSelectors';
 
 const Header: React.FC = () => {
 	const { isMobile } = useResponsiveScales();
