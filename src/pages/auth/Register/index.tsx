@@ -12,6 +12,7 @@ import { registerFormFields } from '@/utils/constants/formFields';
 import { reactQueryKeys } from '@/utils/constants/reactQuery';
 import {
 	formatFormErrorsFromApiResponse,
+	getTestingAttribute,
 	setAuthDataInLocalStorage,
 } from '@/utils/helpers';
 import { showToast } from '@/utils/helpers/capacitorApis';
@@ -20,6 +21,7 @@ import {
 	showSuccessNotification,
 } from '@/utils/helpers/reactToastify';
 import { MESSAGES } from '@/utils/messages';
+import { elementTestSelector } from '@/utils/tests';
 import { registerFormValidationSchema } from '@/validationSchema';
 import { Box, Button, Card, Flex, Heading, Link, Text } from '@radix-ui/themes';
 import { Form, Formik } from 'formik';
@@ -36,21 +38,13 @@ const Register: React.FC = () => {
 	};
 	return (
 		<Box>
-			<Flex
-				justify='center'
-				align='center'
-				minHeight='80vh'
-				direction='column'
-			>
+			<Flex justify='center' align='center' minHeight='80vh' direction='column'>
 				<Card>
-					<Box
-						minWidth='250px'
-						width='80vw'
-						maxWidth='500px'
-					>
+					<Box minWidth='250px' width='80vw' maxWidth='500px'>
 						<Heading
 							mb='4'
 							align='center'
+							{...getTestingAttribute(elementTestSelector.pages.rp.heading)}
 						>
 							Register
 						</Heading>
@@ -62,6 +56,7 @@ const Register: React.FC = () => {
 					<Link
 						onClick={navigateToLoginPage}
 						className='pointer'
+						{...getTestingAttribute(elementTestSelector.pages.rp.loginPnl)}
 					>
 						Login
 					</Link>
@@ -145,9 +140,13 @@ const RegisterForm: React.FC = () => {
 				}
 			}}
 		>
-			{({ values, errors, touched, isValid, dirty }) => {
+			{({ values, errors, touched }) => {
 				return (
-					<Form>
+					<Form
+						{...getTestingAttribute(
+							elementTestSelector.pages.rp.form.con
+						)}
+					>
 						{(Object.keys(registerFormFields) as RegisterFormFieldsEnum[]).map(
 							(_fieldKey) => {
 								return (
@@ -159,6 +158,17 @@ const RegisterForm: React.FC = () => {
 										value={values[_fieldKey]}
 										errorMessage={errors[_fieldKey]}
 										isTouched={touched[_fieldKey]}
+										fieldDataEts={
+											elementTestSelector.pages.rp.form.fields[_fieldKey].input
+										}
+										fieldIconButtonDataEts={
+											elementTestSelector.pages.rp.form.fields[_fieldKey]
+												.iconButton
+										}
+										fieldErrorMessageDataEts={
+											elementTestSelector.pages.rp.form.fields[_fieldKey]
+												.errorMessage
+										}
 									/>
 								);
 							}

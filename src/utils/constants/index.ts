@@ -23,7 +23,8 @@ export const APP_ROUTES = {
 	userFeed: '/feed',
 	myAccount: '/my-account',
 	newsDetail: `/news/${routeParams.newsId}`,
-};
+} as const;
+
 export const API_URLS = {
 	register: '/register',
 	login: '/login',
@@ -33,7 +34,7 @@ export const API_URLS = {
 	updateUserStatus: '/updateUserStatus',
 	searchNewsArticles: '/searchNewsArticles',
 	getNewsFeed: '/getNewsFeed',
-};
+} as const;
 
 export const developerDetails = {
 	portfolioWebsite: 'https://aoneahsan.com',

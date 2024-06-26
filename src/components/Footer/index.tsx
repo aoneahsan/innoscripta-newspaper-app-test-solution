@@ -4,6 +4,8 @@ import { developerDetails } from '@/utils/constants';
 import { LinkTargetEnum } from '@/enums';
 import { useMemo } from 'react';
 import { useResponsiveScales } from '@/hooks/reactResponsive';
+import { elementTestSelector } from '@/utils/tests';
+import { getTestingAttribute } from '@/utils/helpers';
 
 const Footer: React.FC = () => {
 	const { isMobile } = useResponsiveScales();
@@ -12,18 +14,22 @@ const Footer: React.FC = () => {
 			{
 				url: developerDetails.linkedinProfile,
 				label: 'Linkedin Profile',
+				ets: elementTestSelector.footer.links.in,
 			},
 			{
 				url: developerDetails.githubProfile,
 				label: 'Github Profile',
+				ets: elementTestSelector.footer.links.gh,
 			},
 			{
 				url: developerDetails.updatedResume,
 				label: 'Updated Resume',
+				ets: elementTestSelector.footer.links.ur,
 			},
 			{
 				url: developerDetails.updatedCV,
 				label: 'Updated CV',
+				ets: elementTestSelector.footer.links.uc,
 			},
 		];
 	}, []);
@@ -33,6 +39,7 @@ const Footer: React.FC = () => {
 			<Box
 				className='footer-con'
 				py='2'
+				{...getTestingAttribute(elementTestSelector.footer.con)}
 			>
 				<Box className='container'>
 					<Flex
@@ -40,10 +47,16 @@ const Footer: React.FC = () => {
 						align='center'
 						direction={isMobile ? 'column' : 'row'}
 					>
-						<Text align={isMobile ? 'center' : 'left'}>
+						<Text
+							align={isMobile ? 'center' : 'left'}
+							{...getTestingAttribute(elementTestSelector.footer.cprText)}
+						>
 							All rights reserved © {new Date().getFullYear()}
 						</Text>
-						<Text align={isMobile ? 'center' : 'left'}>
+						<Text
+							align={isMobile ? 'center' : 'left'}
+							{...getTestingAttribute(elementTestSelector.footer.dicText)}
+						>
 							Developed by{' '}
 							<Link
 								href={developerDetails.portfolioWebsite}
@@ -68,11 +81,9 @@ const Footer: React.FC = () => {
 									mr='2'
 									mb={isMobile ? '2' : '0'}
 									key={`${el.label}-${index}`}
+									{...getTestingAttribute(el.ets)}
 								>
-									<Link
-										href={el.url}
-										target={LinkTargetEnum.blank}
-									>
+									<Link href={el.url} target={LinkTargetEnum.blank}>
 										{el.label}
 									</Link>
 								</Button>

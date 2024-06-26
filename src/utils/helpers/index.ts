@@ -213,3 +213,13 @@ export const toTitleCase = (str: string): string => {
 		return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
 	});
 };
+
+export const getTestingAttribute = (selector?: string) => {
+	const res: Record<string, string> = {};
+
+	if (selector) {
+		res['zaions-ets'] = selector;
+	}
+
+	return res;
+};

@@ -1,0 +1,25 @@
+# Abbreviations used in project and their meaning
+
+- Testing Labels
+  - ets: element-test-select
+  - rp: register-page
+  - pln: page-link-navigation
+  - con: container
+  - rpff: register-page-form-field
+  - fem: field-error-message
+  - fib: field-icon-button
+  - rpfa: register-page-form-actions
+  - fvsh: forms-validation-state-handler
+  - hc: header-con
+  - hni: header-navigation-items
+  - fc: footer-con
+  - cpr: copyright
+  - fls: footer-links
+  - dic: developer-information-con
+  - in: linkedin
+  - gh: github
+  - ur: updated-resume
+  - uc: updated-cv
+  - nls: navigation-links
+  - nl: navigation-link
+  - btn: button
