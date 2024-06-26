@@ -1,6 +1,6 @@
 import legacy from '@vitejs/plugin-legacy';
 import react from '@vitejs/plugin-react';
-import { defineConfig } from 'vite';
+import { defineConfig } from 'vitest/config';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
@@ -14,6 +14,11 @@ export default defineConfig({
 		globals: true,
 		environment: 'jsdom',
 		setupFiles: './src/setupTests.ts',
+		coverage: {
+			ignoreEmptyLines: true,
+			reporter: ['text', 'html'],
+			provider: 'v8',
+		},
 	},
 	resolve: {
 		alias: {
