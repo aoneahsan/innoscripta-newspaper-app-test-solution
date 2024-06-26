@@ -18,6 +18,7 @@ import { IApiResponse } from '@/types/backendApi';
 import { IUser } from '@/types/userData';
 import {
 	formatFormErrorsFromApiResponse,
+	getTestingAttribute,
 	setAuthDataInLocalStorage,
 } from '@/utils/helpers';
 import { showToast } from '@/utils/helpers/capacitorApis';
@@ -33,12 +34,14 @@ import { NewsFeedContext } from '@/contextApi';
 import { useIsFetching } from '@tanstack/react-query';
 import { getReactQueryKey } from '@/utils/helpers/reactQuery';
 import { ReactQueryKeyEnum } from '@/enums/reactQuery';
+import { elementTestSelector } from '@/utils/constants/testingSelectors';
 
 const NewsFeedPreferenceOptions: React.FC = ({}) => {
 	return (
 		<Box
 			className='container'
 			pt='4'
+			{...getTestingAttribute(elementTestSelector.pages.newsFeed.filters.con)}
 		>
 			<NewsFeedPreferenceOptionsContent />
 		</Box>
@@ -174,7 +177,11 @@ const NewsFeedPreferenceOptionsForm: React.FC = () => {
 		>
 			{({ values, errors, touched }) => {
 				return (
-					<Form>
+					<Form
+						{...getTestingAttribute(
+							elementTestSelector.pages.newsFeed.filters.form.con
+						)}
+					>
 						<Flex
 							justify='between'
 							align={isMobile ? 'stretch' : 'center'}
@@ -207,6 +214,16 @@ const NewsFeedPreferenceOptionsForm: React.FC = () => {
 										}
 										isMulti
 										disabled={disableFormActions}
+										fieldDataEts={
+											elementTestSelector.pages.newsFeed.filters.form.fields[
+												_fieldKey
+											].input
+										}
+										fieldErrorMessageDataEts={
+											elementTestSelector.pages.newsFeed.filters.form.fields[
+												_fieldKey
+											].errorMessage
+										}
 									/>
 								);
 							})}

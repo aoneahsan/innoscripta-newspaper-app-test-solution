@@ -85,7 +85,7 @@ const TextInput: React.FC<TextInputProps> = ({
 							size='2'
 							variant='ghost'
 							onClick={changeShowPasswordState}
-							{...getTestingAttribute(fieldIconButtonDataEts)}
+							{...getTestingAttribute(fieldIconButtonDataEts?? '')}
 						>
 							{compState.showPassword ? (
 								<EyeOpenIcon height='16' width='16' />
@@ -101,7 +101,7 @@ const TextInput: React.FC<TextInputProps> = ({
 					color='red'
 					size='1'
 					ml='1'
-					{...getTestingAttribute(fieldErrorMessageDataEts)}
+					{...getTestingAttribute(fieldErrorMessageDataEts ?? '')}
 				>
 					{errorMessage}
 				</Text>

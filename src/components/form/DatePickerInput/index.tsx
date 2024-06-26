@@ -5,6 +5,7 @@ import dayjs from 'dayjs';
 import './styles.css';
 import { Flex, Text } from '@radix-ui/themes';
 import { useResponsiveScales } from '@/hooks/reactResponsive';
+import { getTestingAttribute } from '@/utils/helpers';
 
 interface IDatePickerInputProps {
 	value?: string | Date | null;
@@ -14,6 +15,8 @@ interface IDatePickerInputProps {
 	maxDate?: Date;
 	errorMessage?: string;
 	isTouched?: boolean;
+	fieldDataEts: string;
+	fieldErrorMessageDataEts?: string;
 }
 
 const DatePickerInput: React.FC<IDatePickerInputProps> = ({
@@ -24,6 +27,8 @@ const DatePickerInput: React.FC<IDatePickerInputProps> = ({
 	maxDate,
 	errorMessage,
 	isTouched,
+	fieldDataEts,
+	fieldErrorMessageDataEts,
 }) => {
 	const { isMobile } = useResponsiveScales();
 	const { setFieldValue, handleBlur } =
@@ -34,6 +39,7 @@ const DatePickerInput: React.FC<IDatePickerInputProps> = ({
 			direction='column'
 			mb='3'
 			width={isMobile ? '100%' : '200px'}
+			{...getTestingAttribute(fieldDataEts)}
 		>
 			<DatePicker
 				selected={value ? new Date(value) : null}
@@ -56,6 +62,7 @@ const DatePickerInput: React.FC<IDatePickerInputProps> = ({
 					size='1'
 					ml='1'
 					mt='1'
+					{...getTestingAttribute(fieldErrorMessageDataEts ?? '')}
 				>
 					{errorMessage}
 				</Text>

@@ -142,11 +142,7 @@ const RegisterForm: React.FC = () => {
 		>
 			{({ values, errors, touched }) => {
 				return (
-					<Form
-						{...getTestingAttribute(
-							elementTestSelector.pages.rp.form.con
-						)}
-					>
+					<Form {...getTestingAttribute(elementTestSelector.pages.rp.form.con)}>
 						{(Object.keys(registerFormFields) as RegisterFormFieldsEnum[]).map(
 							(_fieldKey) => {
 								return (

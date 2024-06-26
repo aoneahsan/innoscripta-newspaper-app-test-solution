@@ -5,6 +5,8 @@ import './styles.css';
 import { INewsItem } from '@/types/newsArticlesFrontend';
 import FullPageCenteredMessage from '../FullPageCenteredMessage';
 import { useResponsiveScales } from '@/hooks/reactResponsive';
+import { getTestingAttribute } from '@/utils/helpers';
+import { elementTestSelector } from '@/utils/constants/testingSelectors';
 
 interface INewsGridProps {
 	newsArticles: INewsItem[];
@@ -15,10 +17,7 @@ const NewsGrid: React.FC<INewsGridProps> = ({ newsArticles }) => {
 		useResponsiveScales();
 
 	return (
-		<Box
-			className='container'
-			py='6'
-		>
+		<Box className='container' py='6'>
 			{newsArticles.length > 0 ? (
 				<Grid
 					gap='6'
@@ -34,14 +33,12 @@ const NewsGrid: React.FC<INewsGridProps> = ({ newsArticles }) => {
 							: '2'
 					}
 					className='grid-column-equal-height'
+					{...getTestingAttribute(
+						elementTestSelector.components.newsList.listCon
+					)}
 				>
 					{newsArticles?.map((el) => {
-						return (
-							<NewsGridItem
-								key={el.id}
-								newsItemData={el}
-							/>
-						);
+						return <NewsGridItem key={el.id} newsItemData={el} />;
 					})}
 				</Grid>
 			) : (

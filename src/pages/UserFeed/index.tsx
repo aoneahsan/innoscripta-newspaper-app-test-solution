@@ -10,6 +10,7 @@ import { newsFeedArticlesRStateAtom } from '@/state/newsArticles';
 import { IApiResponse } from '@/types/backendApi';
 import { INewsArticlesApiResponse } from '@/types/backendApi/newsArticlesBackend';
 import { API_URLS } from '@/utils/constants';
+import { elementTestSelector } from '@/utils/constants/testingSelectors';
 import { formatNewsArticlesData } from '@/utils/helpers/reactQuery/newsArticlesBackend';
 import { showErrorNotification } from '@/utils/helpers/reactToastify';
 import { Box } from '@radix-ui/themes';
@@ -71,7 +72,10 @@ const UserFeed: React.FC = () => {
 					<FullPageLoader />
 				) : (
 					<Box mt='4'>
-						<RefetchDataButton onClick={onRefetchData} />
+						<RefetchDataButton
+							onClick={onRefetchData}
+							dataEts={elementTestSelector.pages.newsFeed.refetchDataBtn}
+						/>
 						<NewsGrid newsArticles={newsFeedArticlesRState} />
 					</Box>
 				)}

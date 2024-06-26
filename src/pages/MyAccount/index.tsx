@@ -1,3 +1,4 @@
+import FormActionButtons from '@/components/form/FormActionButtons';
 import TextInput from '@/components/form/TextInput';
 import { UserAccountDataFormFieldsEnum } from '@/enums/formData';
 import { usePutRequest } from '@/hooks/reactQuery';
@@ -7,9 +8,11 @@ import { IApiResponse } from '@/types/backendApi';
 import { IUser } from '@/types/userData';
 import { API_URLS } from '@/utils/constants';
 import { userAccountDataFormFields } from '@/utils/constants/formFields';
-import { reactQueryKeys } from '@/utils/constants/reactQuery'
+import { reactQueryKeys } from '@/utils/constants/reactQuery';
+import { elementTestSelector } from '@/utils/constants/testingSelectors';
 import {
 	formatFormErrorsFromApiResponse,
+	getTestingAttribute,
 	setAuthDataInLocalStorage,
 } from '@/utils/helpers';
 import { showToast } from '@/utils/helpers/capacitorApis';
@@ -28,21 +31,15 @@ import { ZodError } from 'zod';
 const MyAccount: React.FC = () => {
 	return (
 		<Box>
-			<Flex
-				justify='center'
-				align='center'
-				minHeight='40vh'
-				direction='column'
-			>
+			<Flex justify='center' align='center' minHeight='40vh' direction='column'>
 				<Card>
-					<Box
-						minWidth='250px'
-						width='80vw'
-						maxWidth='500px'
-					>
+					<Box minWidth='250px' width='80vw' maxWidth='500px'>
 						<Heading
 							mb='4'
 							align='center'
+							{...getTestingAttribute(
+								elementTestSelector.pages.myAccount.heading
+							)}
 						>
 							MyAccount
 						</Heading>
@@ -63,7 +60,9 @@ const MyAccountForm: React.FC = () => {
 		}),
 		[userDataRState]
 	);
-	const { mutateAsync: updateUserData } = usePutRequest(reactQueryKeys.mutation.updateUserData);
+	const { mutateAsync: updateUserData } = usePutRequest(
+		reactQueryKeys.mutation.updateUserData
+	);
 	const formValidationRState = useRecoilValue(formValidationRStateAtom);
 
 	return (
@@ -121,7 +120,11 @@ const MyAccountForm: React.FC = () => {
 		>
 			{({ values, errors, touched }) => {
 				return (
-					<Form>
+					<Form
+						{...getTestingAttribute(
+							elementTestSelector.pages.myAccount.form.con
+						)}
+					>
 						{(
 							Object.keys(
 								userAccountDataFormFields
@@ -136,21 +139,23 @@ const MyAccountForm: React.FC = () => {
 									value={values[_fieldKey]}
 									errorMessage={errors[_fieldKey]}
 									isTouched={touched[_fieldKey]}
+									fieldDataEts={
+										elementTestSelector.pages.myAccount.form.fields[_fieldKey]
+											.input
+									}
+									fieldErrorMessageDataEts={
+										elementTestSelector.pages.myAccount.form.fields[_fieldKey]
+											.errorMessage
+									}
+									fieldIconButtonDataEts={
+										elementTestSelector.pages.myAccount.form.fields[_fieldKey]
+											.iconButton
+									}
 								/>
 							);
 						})}
 
-						<Box mb='3'>
-							<Flex justify='between'>
-								<Button
-									type='reset'
-									color='red'
-								>
-									Reset
-								</Button>
-								<Button type='submit'>Update</Button>
-							</Flex>
-						</Box>
+						<FormActionButtons submitButtonText='Update' />
 					</Form>
 				);
 			}}
