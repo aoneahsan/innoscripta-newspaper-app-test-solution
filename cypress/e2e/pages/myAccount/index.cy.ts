@@ -1,13 +1,7 @@
 /// <reference types="cypress" />
 
-import { API_URLS, APP_ROUTES } from '@/utils/constants';
-import { apisMockData } from '@cy/mock-data';
-import { CY_ENVS } from '@cy/utils/envKeys';
-import {
-	authenticateUser,
-	getCompleteApiUrl,
-	interceptStabApiResponse,
-} from '@cy/utils/helpers';
+import { APP_ROUTES } from '@/utils/constants';
+import { authenticateUser, interceptStabApiResponse } from '@cy/utils/helpers';
 
 let userIsAuthenticated = false;
 
