@@ -1,20 +1,10 @@
-import { defineConfig } from "cypress";
+import { defineConfig } from 'cypress';
 
 export default defineConfig({
-  e2e: {
-    baseUrl: "http://localhost:5173",
-    setupNodeEvents(on, config) {
-      // implement node event listeners here
-    },
-    requestTimeout: 60 * 1000,
-    responseTimeout: 60 * 1000,
-    defaultCommandTimeout: 30 * 1000,
-  },
-
-  component: {
-    devServer: {
-      framework: "react",
-      bundler: "vite",
-    },
-  },
+	component: {
+		devServer: {
+			framework: 'react',
+			bundler: 'vite',
+		},
+	},
 });
