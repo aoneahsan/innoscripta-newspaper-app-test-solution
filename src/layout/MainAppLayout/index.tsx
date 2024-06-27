@@ -3,23 +3,28 @@ import NetworkDetectHOC from '@/HOC/NetworkDetectHOC';
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
 import { useResponsiveScales } from '@/hooks/reactResponsive';
-import { getAuthDataFromLocalStorage } from '@/utils/helpers';
+import { getTestingAttribute } from '@/utils/helpers';
 import { Box } from '@radix-ui/themes';
-import { useEffect } from 'react';
-import { Outlet } from 'react-router';
+import { Outlet, useLocation } from 'react-router';
 
 const MainAppLayout: React.FC = () => {
 	const { isMobile } = useResponsiveScales();
+	const location = useLocation();
 
-	useEffect(() => {
-		void (async () => {
-			const authData = await getAuthDataFromLocalStorage();
-
-			console.log({ ml: 'MainAppLayout -> useEffect -> authData: ', authData });
-		})();
-	});
 	return (
 		<>
+			<p
+				style={{
+					position: 'absolute',
+					top: '-100%',
+					right: '-100%',
+					userSelect: 'none',
+					visibility: 'hidden',
+				}}
+				{...getTestingAttribute('app-location-info')}
+			>
+				{JSON.stringify(location)}
+			</p>
 			<NetworkDetectHOC>
 				<AuthenticationHOC>
 					<Header />
