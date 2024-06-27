@@ -34,3 +34,4 @@
   - myapf: my-account-page-form
   - lets: list-element-test-selector
   - fpcm: full-page-centered-message
+  - FEM/fem: field-error-message

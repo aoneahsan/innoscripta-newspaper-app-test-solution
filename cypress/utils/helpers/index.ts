@@ -10,3 +10,7 @@ export const getUniqueEmail = (time: number): string => {
 	const newEmail = emailArr[0] + time + '@' + emailArr[1];
 	return newEmail;
 };
+
+export const getCompleteApiUrl = (apiPath: string) => {
+	return apiPath.startsWith('/') ? `/api${apiPath}` : `/api/${apiPath}`;
+};
