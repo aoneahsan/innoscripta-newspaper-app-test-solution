@@ -3,6 +3,7 @@ import {
 	ISearchArticlesFiltersFormData,
 	ISelectOption,
 } from '@/types/formData';
+import { getTestingAttribute } from '@/utils/helpers';
 import { Flex, Text } from '@radix-ui/themes';
 import { useFormikContext } from 'formik';
 import ReactSelect from 'react-select';
@@ -16,6 +17,8 @@ interface ISelectInputProps {
 	options: ISelectOption[];
 	isMulti?: boolean;
 	disabled?: boolean;
+	fieldDataEts: string;
+	fieldErrorMessageDataEts?: string;
 }
 
 const SelectInput: React.FC<ISelectInputProps> = ({
@@ -27,6 +30,8 @@ const SelectInput: React.FC<ISelectInputProps> = ({
 	options,
 	isMulti,
 	disabled,
+	fieldDataEts,
+	fieldErrorMessageDataEts,
 }) => {
 	const { isMobile } = useResponsiveScales();
 	const { setFieldValue, handleBlur } =
@@ -37,10 +42,7 @@ const SelectInput: React.FC<ISelectInputProps> = ({
 	}
 
 	return (
-		<Flex
-			direction='column'
-			mb='3'
-		>
+		<Flex direction='column' mb='3' {...getTestingAttribute(fieldDataEts)}>
 			<ReactSelect
 				name={inputName}
 				isDisabled={disabled}
@@ -86,6 +88,7 @@ const SelectInput: React.FC<ISelectInputProps> = ({
 					size='1'
 					ml='1'
 					mt='1'
+					{...getTestingAttribute(fieldErrorMessageDataEts ?? '')}
 				>
 					{errorMessage}
 				</Text>

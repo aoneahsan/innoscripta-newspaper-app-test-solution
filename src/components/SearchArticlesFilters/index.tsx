@@ -14,17 +14,23 @@ import FormActionButtons from '../form/FormActionButtons';
 import { useSearchParams } from 'react-router-dom';
 import { FormFieldType } from '@/enums';
 import DatePickerInput from '../form/DatePickerInput';
-import { getSearchParamsData, setSearchParamsData } from '@/utils/helpers';
+import {
+	getSearchParamsData,
+	getTestingAttribute,
+	setSearchParamsData,
+} from '@/utils/helpers';
 import { ISearchArticlesFiltersSearchParams } from '@/types/searchParams';
 import SelectInput from '../form/SelectInput';
 import { useResponsiveScales } from '@/hooks/reactResponsive';
 import { ArrowDownIcon, ArrowUpIcon } from '@radix-ui/react-icons';
+import { elementTestSelector } from '@/utils/constants/testingSelectors';
 
 const SearchArticlesFilters: React.FC = () => {
 	return (
 		<Box
 			className='container'
 			pt='4'
+			{...getTestingAttribute(elementTestSelector.pages.searchNews.filters.con)}
 		>
 			<SearchArticlesFiltersContent />
 		</Box>
@@ -38,7 +44,16 @@ const SearchArticlesFiltersContent: React.FC = () => {
 	});
 
 	const heading = useMemo(() => {
-		return <Heading size='4'>Search Filters</Heading>;
+		return (
+			<Heading
+				size='4'
+				{...getTestingAttribute(
+					elementTestSelector.pages.searchNews.filters.heading
+				)}
+			>
+				Search Filters
+			</Heading>
+		);
 	}, []);
 	const content = useMemo(() => {
 		return (
@@ -145,7 +160,11 @@ const SearchArticlesFiltersForm: React.FC = () => {
 		>
 			{({ values, errors, touched }) => {
 				return (
-					<Form>
+					<Form
+						{...getTestingAttribute(
+							elementTestSelector.pages.searchNews.filters.form.con
+						)}
+					>
 						<Flex
 							justify='between'
 							align={isMobile ? 'stretch' : 'center'}
@@ -173,6 +192,14 @@ const SearchArticlesFiltersForm: React.FC = () => {
 											maxDate={searchArticlesFormFields[_fieldKey].maxDate}
 											errorMessage={errors[_fieldKey]}
 											isTouched={touched[_fieldKey]}
+											fieldDataEts={
+												elementTestSelector.pages.searchNews.filters.form
+													.fields[_fieldKey].input
+											}
+											fieldErrorMessageDataEts={
+												elementTestSelector.pages.searchNews.filters.form
+													.fields[_fieldKey].errorMessage
+											}
 										/>
 									);
 								} else if (
@@ -198,6 +225,14 @@ const SearchArticlesFiltersForm: React.FC = () => {
 													? newsSourceSelectOptions
 													: []
 											}
+											fieldDataEts={
+												elementTestSelector.pages.searchNews.filters.form
+													.fields[_fieldKey].input
+											}
+											fieldErrorMessageDataEts={
+												elementTestSelector.pages.searchNews.filters.form
+													.fields[_fieldKey].errorMessage
+											}
 										/>
 									);
 								} else {
@@ -213,6 +248,18 @@ const SearchArticlesFiltersForm: React.FC = () => {
 											errorMessage={errors[_fieldKey]}
 											isTouched={touched[_fieldKey]}
 											showValidState={false}
+											fieldDataEts={
+												elementTestSelector.pages.searchNews.filters.form
+													.fields[_fieldKey].input
+											}
+											fieldErrorMessageDataEts={
+												elementTestSelector.pages.searchNews.filters.form
+													.fields[_fieldKey].errorMessage
+											}
+											fieldIconButtonDataEts={
+												elementTestSelector.pages.searchNews.filters.form
+													.fields[_fieldKey].iconButton
+											}
 										/>
 									);
 								}

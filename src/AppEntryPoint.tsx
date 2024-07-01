@@ -1,4 +1,4 @@
-import { Theme, ThemePanel } from '@radix-ui/themes';
+import { Theme } from '@radix-ui/themes';
 
 // Import Radix UI CSS
 import { RouterProvider } from 'react-router-dom';
@@ -12,25 +12,25 @@ import '@radix-ui/themes/styles.css';
 import 'react-toastify/dist/ReactToastify.min.css';
 
 import 'react-datepicker/dist/react-datepicker.css';
-import { isCapWeb } from './utils/constants/capacitorApis';
 
 const queryClient = new QueryClient();
 
-const AppEntryPoint: React.FC = () => (
-	<>
-		<Theme>
-			<RecoilRoot>
-				<QueryClientProvider client={queryClient}>
-					<RouterProvider router={appRouter} />
+const AppEntryPoint: React.FC = () => {
+	return (
+		<>
+			<Theme>
+				<RecoilRoot>
+					<QueryClientProvider client={queryClient}>
+						<RouterProvider router={appRouter} />
 
-					<ReactQueryDevtools initialIsOpen={false} />
-				</QueryClientProvider>
-			</RecoilRoot>
-			{isCapWeb && <ThemePanel />}
+						<ReactQueryDevtools initialIsOpen={false} />
+					</QueryClientProvider>
+				</RecoilRoot>
 
-			<ToastContainer />
-		</Theme>
-	</>
-);
+				<ToastContainer />
+			</Theme>
+		</>
+	);
+};
 
 export default AppEntryPoint;

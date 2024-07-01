@@ -1,4 +1,6 @@
 import { formValidationRStateAtom } from '@/state/formState';
+import { getTestingAttribute } from '@/utils/helpers';
+import { elementTestSelector } from '@/utils/constants/testingSelectors';
 import { InfoCircledIcon } from '@radix-ui/react-icons';
 import { Callout, Strong, Switch, Text } from '@radix-ui/themes';
 import { useRecoilState } from 'recoil';
@@ -16,7 +18,10 @@ const HandleFormValidationState: React.FC = () => {
 		} catch (error) {}
 	};
 	return (
-		<Callout.Root mt='9'>
+		<Callout.Root
+			mt='9'
+			{...getTestingAttribute(elementTestSelector.components.fvsh.con)}
+		>
 			<Callout.Icon>
 				<InfoCircledIcon />
 			</Callout.Icon>
@@ -25,11 +30,13 @@ const HandleFormValidationState: React.FC = () => {
 				You can turn off frontend validation to check the backend validation
 				logic!
 			</Callout.Text>
-			<Callout.Text
-				color='blue'
-				className='d-flex justify-between'
-			>
-				<Text mr='5'>
+			<Callout.Text color='blue' className='d-flex justify-between'>
+				<Text
+					mr='5'
+					{...getTestingAttribute(
+						elementTestSelector.components.fvsh.stateText
+					)}
+				>
 					Frontend Form Validation{' '}
 					<Strong>
 						{formValidationRState.frontendFormValidationIsEnabled
@@ -40,6 +47,9 @@ const HandleFormValidationState: React.FC = () => {
 				<Switch
 					checked={formValidationRState.frontendFormValidationIsEnabled}
 					onCheckedChange={onStateChange}
+					{...getTestingAttribute(
+						elementTestSelector.components.fvsh.switchButton
+					)}
 				/>
 			</Callout.Text>
 			<Callout.Text color='jade'>

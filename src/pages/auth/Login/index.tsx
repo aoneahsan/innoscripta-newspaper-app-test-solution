@@ -10,8 +10,10 @@ import { IUser } from '@/types/userData';
 import { API_URLS, APP_ROUTES } from '@/utils/constants';
 import { loginFormFields } from '@/utils/constants/formFields';
 import { reactQueryKeys } from '@/utils/constants/reactQuery';
+import { elementTestSelector } from '@/utils/constants/testingSelectors';
 import {
 	formatFormErrorsFromApiResponse,
+	getTestingAttribute,
 	setAuthDataInLocalStorage,
 } from '@/utils/helpers';
 import { showToast } from '@/utils/helpers/capacitorApis';
@@ -36,21 +38,13 @@ const Login: React.FC = () => {
 	};
 	return (
 		<Box>
-			<Flex
-				justify='center'
-				align='center'
-				minHeight='70vh'
-				direction='column'
-			>
+			<Flex justify='center' align='center' minHeight='70vh' direction='column'>
 				<Card>
-					<Box
-						minWidth='250px'
-						width='80vw'
-						maxWidth='500px'
-					>
+					<Box minWidth='250px' width='80vw' maxWidth='500px'>
 						<Heading
 							mb='4'
 							align='center'
+							{...getTestingAttribute(elementTestSelector.pages.lp.heading)}
 						>
 							Login
 						</Heading>
@@ -63,6 +57,7 @@ const Login: React.FC = () => {
 					<Link
 						onClick={navigateToRegisterPage}
 						className='pointer'
+						{...getTestingAttribute(elementTestSelector.pages.lp.registerPnl)}
 					>
 						Create a Account
 					</Link>
@@ -143,7 +138,7 @@ const LoginForm: React.FC = () => {
 		>
 			{({ values, errors, touched }) => {
 				return (
-					<Form>
+					<Form {...getTestingAttribute(elementTestSelector.pages.lp.form.con)}>
 						{(Object.keys(loginFormFields) as LoginFormFieldsEnum[]).map(
 							(_fieldKey) => {
 								return (
@@ -155,6 +150,17 @@ const LoginForm: React.FC = () => {
 										value={values[_fieldKey]}
 										errorMessage={errors[_fieldKey]}
 										isTouched={touched[_fieldKey]}
+										fieldDataEts={
+											elementTestSelector.pages.lp.form.fields[_fieldKey].input
+										}
+										fieldErrorMessageDataEts={
+											elementTestSelector.pages.lp.form.fields[_fieldKey]
+												.errorMessage
+										}
+										fieldIconButtonDataEts={
+											elementTestSelector.pages.lp.form.fields[_fieldKey]
+												.iconButton
+										}
 									/>
 								);
 							}

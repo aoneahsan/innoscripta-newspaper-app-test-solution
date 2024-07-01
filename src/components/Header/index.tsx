@@ -7,7 +7,9 @@ import NavigationLink from '../NavigationLink';
 import { useRecoilValue } from 'recoil';
 import { userIsAuthenticatedRStateSelector } from '@/state/userState';
 import LogoutButton from '../LogoutButton';
-import { useResponsiveScales } from '@/hooks/reactResponsive'
+import { useResponsiveScales } from '@/hooks/reactResponsive';
+import { getTestingAttribute } from '@/utils/helpers';
+import { elementTestSelector } from '@/utils/constants/testingSelectors';
 
 const Header: React.FC = () => {
 	const { isMobile } = useResponsiveScales();
@@ -17,26 +19,31 @@ const Header: React.FC = () => {
 				path: APP_ROUTES.home,
 				isAuthenticated: true,
 				label: 'Search Articles',
+				ets: elementTestSelector.header.nls.searchArticles,
 			},
 			{
 				path: APP_ROUTES.userFeed,
 				isAuthenticated: true,
 				label: 'News Feed',
+				ets: elementTestSelector.header.nls.newsFeed,
 			},
 			{
 				path: APP_ROUTES.myAccount,
 				isAuthenticated: true,
 				label: 'My Account',
+				ets: elementTestSelector.header.nls.myAccount,
 			},
 			{
 				path: APP_ROUTES.login,
 				isAuthenticated: false,
 				label: 'Login',
+				ets: elementTestSelector.header.nls.login,
 			},
 			{
 				path: APP_ROUTES.register,
 				isAuthenticated: false,
 				label: 'Register',
+				ets: elementTestSelector.header.nls.register,
 			},
 		];
 	}, []);
@@ -46,11 +53,11 @@ const Header: React.FC = () => {
 
 	return (
 		<>
-			<Box className='header-con'>
-				<Box
-					className='container'
-					py='3'
-				>
+			<Box
+				className='header-con'
+				{...getTestingAttribute(elementTestSelector.header.con)}
+			>
+				<Box className='container' py='3'>
 					<Flex
 						justify={isMobile ? 'center' : 'between'}
 						align='center'
@@ -59,6 +66,7 @@ const Header: React.FC = () => {
 						<img
 							src={IMAGES.NewsPaperAppIcon}
 							width={60}
+							{...getTestingAttribute(elementTestSelector.header.logo)}
 						/>
 						<Flex
 							justify={isMobile ? 'center' : 'start'}
@@ -72,6 +80,7 @@ const Header: React.FC = () => {
 									label={el.label}
 									path={el.path}
 									key={`${el.path}-${el.label}-${index}`}
+									ets={el.ets}
 								/>
 							))}
 							{userIsAuthenticatedRState ? <LogoutButton /> : null}

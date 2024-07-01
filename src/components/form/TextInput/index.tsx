@@ -8,7 +8,8 @@ import { Box, IconButton, Text, TextField } from '@radix-ui/themes';
 import { useFormikContext } from 'formik';
 import { EyeOpenIcon, EyeClosedIcon } from '@radix-ui/react-icons';
 import { useState } from 'react';
-import { useResponsiveScales } from '@/hooks/reactResponsive'
+import { useResponsiveScales } from '@/hooks/reactResponsive';
+import { getTestingAttribute } from '@/utils/helpers';
 
 interface TextInputProps {
 	inputName: string;
@@ -18,6 +19,9 @@ interface TextInputProps {
 	errorMessage: string | undefined;
 	isTouched: boolean | undefined;
 	showValidState?: boolean;
+	fieldDataEts: string;
+	fieldIconButtonDataEts?: string;
+	fieldErrorMessageDataEts?: string;
 }
 
 const TextInput: React.FC<TextInputProps> = ({
@@ -28,6 +32,9 @@ const TextInput: React.FC<TextInputProps> = ({
 	errorMessage,
 	isTouched,
 	showValidState = true,
+	fieldDataEts,
+	fieldErrorMessageDataEts,
+	fieldIconButtonDataEts,
 }) => {
 	const { isMobile } = useResponsiveScales();
 	const [compState, setCompState] = useState<{ showPassword: boolean }>({
@@ -70,27 +77,20 @@ const TextInput: React.FC<TextInputProps> = ({
 						: undefined
 				}
 				variant={isTouched ? 'soft' : 'surface'}
+				{...getTestingAttribute(fieldDataEts)}
 			>
 				{type === FormFieldType.password ? (
-					<TextField.Slot
-						pr='3'
-						side='right'
-					>
+					<TextField.Slot pr='3' side='right'>
 						<IconButton
 							size='2'
 							variant='ghost'
 							onClick={changeShowPasswordState}
+							{...getTestingAttribute(fieldIconButtonDataEts?? '')}
 						>
 							{compState.showPassword ? (
-								<EyeOpenIcon
-									height='16'
-									width='16'
-								/>
+								<EyeOpenIcon height='16' width='16' />
 							) : (
-								<EyeClosedIcon
-									height='16'
-									width='16'
-								/>
+								<EyeClosedIcon height='16' width='16' />
 							)}
 						</IconButton>
 					</TextField.Slot>
@@ -101,6 +101,7 @@ const TextInput: React.FC<TextInputProps> = ({
 					color='red'
 					size='1'
 					ml='1'
+					{...getTestingAttribute(fieldErrorMessageDataEts ?? '')}
 				>
 					{errorMessage}
 				</Text>

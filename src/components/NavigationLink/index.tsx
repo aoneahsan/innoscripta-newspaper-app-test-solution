@@ -1,6 +1,7 @@
 import { useResponsiveScales } from '@/hooks/reactResponsive';
 import { userIsAuthenticatedRStateSelector } from '@/state/userState';
 import { APP_ROUTES } from '@/utils/constants';
+import { getTestingAttribute } from '@/utils/helpers';
 import { Button } from '@radix-ui/themes';
 import { matchRoutes, useLocation } from 'react-router';
 import { Link } from 'react-router-dom';
@@ -10,12 +11,14 @@ interface INavigationLinkProps {
 	path: string;
 	isAuthenticated: boolean;
 	label: string;
+	ets: string;
 }
 
 const NavigationLink: React.FC<INavigationLinkProps> = ({
 	isAuthenticated,
 	label,
 	path,
+	ets,
 }) => {
 	const { isMobile, isTablet } = useResponsiveScales();
 	const location = useLocation();
@@ -49,6 +52,7 @@ const NavigationLink: React.FC<INavigationLinkProps> = ({
 				color={isCurrentPathActive ? 'teal' : undefined}
 				asChild
 				mb={isMobile ? '2' : '0'}
+				{...getTestingAttribute(ets)}
 			>
 				<Link to={path}>{label}</Link>
 			</Button>

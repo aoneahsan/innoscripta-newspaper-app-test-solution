@@ -11,6 +11,7 @@ import { INewsArticlesApiResponse } from '@/types/backendApi/newsArticlesBackend
 import { ISearchArticlesFiltersSearchParams } from '@/types/searchParams';
 import { API_URLS } from '@/utils/constants';
 import { reactQueryOptions } from '@/utils/constants/reactQuery';
+import { elementTestSelector } from '@/utils/constants/testingSelectors';
 import { addQueryParamsInUrl, getSearchParamsData } from '@/utils/helpers';
 import { formatNewsArticlesData } from '@/utils/helpers/reactQuery/newsArticlesBackend';
 import { showErrorNotification } from '@/utils/helpers/reactToastify';
@@ -84,7 +85,10 @@ const Home: React.FC = () => {
 					<FullPageLoader />
 				) : (
 					<Box mt='4'>
-						<RefetchDataButton onClick={onRefetchData} />
+						<RefetchDataButton
+							onClick={onRefetchData}
+							dataEts={elementTestSelector.pages.searchNews.refetchDataBtn}
+						/>
 						<NewsGrid newsArticles={searchedNewsArticlesRState} />
 					</Box>
 				)}

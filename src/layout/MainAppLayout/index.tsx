@@ -8,6 +8,7 @@ import { Outlet } from 'react-router';
 
 const MainAppLayout: React.FC = () => {
 	const { isMobile } = useResponsiveScales();
+
 	return (
 		<>
 			<NetworkDetectHOC>

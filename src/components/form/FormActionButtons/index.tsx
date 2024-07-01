@@ -1,3 +1,5 @@
+import { elementTestSelector } from '@/utils/constants/testingSelectors';
+import { getTestingAttribute } from '@/utils/helpers';
 import { Box, Button, Flex } from '@radix-ui/themes';
 import { useFormikContext } from 'formik';
 
@@ -8,6 +10,8 @@ interface IFormActionButtonsProps {
 	submitButtonText?: string;
 	onResetClicked?: () => void;
 	processing?: boolean;
+	resetBtnEts?: string;
+	submitBtnEts?: string;
 }
 const FormActionButtons: React.FC<IFormActionButtonsProps> = ({
 	resetButtonText,
@@ -16,6 +20,8 @@ const FormActionButtons: React.FC<IFormActionButtonsProps> = ({
 	submitButtonText,
 	onResetClicked,
 	processing,
+	resetBtnEts,
+	submitBtnEts,
 }) => {
 	const { dirty, isValid } = useFormikContext();
 	return (
@@ -28,6 +34,9 @@ const FormActionButtons: React.FC<IFormActionButtonsProps> = ({
 						disabled={processing || (onResetClicked ? false : !dirty)}
 						mr='4'
 						onClick={onResetClicked}
+						{...getTestingAttribute(
+							resetBtnEts || elementTestSelector.components.formActions.reset
+						)}
 					>
 						{resetButtonText ?? 'Reset'}
 					</Button>
@@ -36,6 +45,9 @@ const FormActionButtons: React.FC<IFormActionButtonsProps> = ({
 					<Button
 						type='submit'
 						disabled={!isValid || processing}
+						{...getTestingAttribute(
+							submitBtnEts || elementTestSelector.components.formActions.submit
+						)}
 					>
 						{submitButtonText ?? 'Submit'}
 					</Button>
